@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { data } from 'autoprefixer';
 import Videonav from './Component/Videonav/Videonav';
 import { Link } from 'react-router-dom';
-
+import routes from '../Routes/Routes';
 function App() {
  
   const [loading,setloading]=useState(false);
@@ -18,7 +18,7 @@ function App() {
 
   useEffect(()=>{
          (async()=>{
-          const res=await axios.get("http://localhost:3000/api/v1/Allvideo");
+          const res=await axios.get(`${routes}/Allvideo`);
           if(res.data.success){
             setvideoData(res.data.data);
           }
@@ -45,7 +45,7 @@ function App() {
       setloading(true)
       fd.append("name",Data.name)
       fd.append("videofile",Data.filename);
-      const res=await axios.post("http://localhost:3000/api/v1/createvideo",fd)    ;
+      const res=await axios.post(`${routes}/createvideo`,fd)    ;
       if(res.data.success){
           setloading(false);
       }

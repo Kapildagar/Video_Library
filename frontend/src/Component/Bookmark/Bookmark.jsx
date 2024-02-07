@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import VideoPlayer from "./Videop";
 import { Link } from "react-router-dom";
+import routes from "../../../Routes/Routes";
 
 const Bookmark = () => {
 
@@ -9,7 +10,7 @@ const Bookmark = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await axios.get("http://localhost:3000/api/v1/Allvideo")
+            const res = await axios.get(`${routes}/Allvideo`)
             console.log(res);
             const ndata = res.data.data;
             const bookdata = ndata.filter((it) => it.bookmark)
