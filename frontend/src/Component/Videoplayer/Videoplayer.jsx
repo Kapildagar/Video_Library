@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
+import routes from '../../../Routes/Routes';
 const VideoPlayer = ({ videoSource }) => {
   console.log(videoSource)
   const [isPlaying, setIsPlaying] = useState(false);
@@ -21,7 +22,7 @@ const VideoPlayer = ({ videoSource }) => {
   const handleClick = async (id) => {
     console.log(id)
     console.log(book);
-    const res = await axios.post(`http://localhost:3000/api/v1/addBook/${id}`);
+    const res = await axios.post(`${routes}/addBook/${id}`);
     if (res.data.success) {
       setbook(res.data.data.bookmark)
     }
@@ -31,7 +32,7 @@ const VideoPlayer = ({ videoSource }) => {
   const handleDelete = async (id) => {
     console.log(id)
     console.log(book);
-    const res = await axios.delete(`http://localhost:3000/api/v1/deleteVideo/${id}`);
+    const res = await axios.delete(`${routes}/deleteVideo/${id}`);
     console.log(res)
     if (res.data.success) {
       window.location.reload();
